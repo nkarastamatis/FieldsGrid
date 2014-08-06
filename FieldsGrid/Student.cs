@@ -8,11 +8,15 @@ using System.ComponentModel;
 namespace FieldsGrid
 {
     [TypeDescriptionProvider(typeof(MyTypeDescriptionProvider))]
+    [ReadOnly(false)]
+    [TypeConverter(typeof(MyObjectShellConverter))]
     class Student
     {
+        [ReadOnly(false)]
         public string Name;
         public string Grade;
         public DateTime DOB;
+        public bool YES;
 
         public Student()
         {
@@ -28,23 +32,24 @@ namespace FieldsGrid
 
         }
 
-        public StudentInformation StudentInfo{ get; set; }
-        public List<Score> Score{get; set;}
+        public StudentInformation StudentInfo;
+        public List<Score> Score;
 
     }
 
+    [TypeDescriptionProvider(typeof(MyTypeDescriptionProvider))]
     public class Score
     {
-        [DisplayName("Subject")]
-        public string SubjectName { get; set; }
-        [DisplayName("Result")]
-        public string Grade { get; set; }
+        //[DisplayName("Subject")]
+        public string SubjectName;
+        //[DisplayName("Result")]
+        public string Grade;
     }
 
     [TypeDescriptionProvider(typeof(MyTypeDescriptionProvider))]
     public class StudentInformation
     {
-        public string Name { get; set; }
-        public string Id { get; set; }
+        public string Name;
+        public string Id;
     }
 }

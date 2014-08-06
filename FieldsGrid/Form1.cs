@@ -18,7 +18,12 @@ namespace FieldsGrid
             InitializeComponent();
             var s = new Student();
             var fields = typeof(Student).GetFields();
-            propertyGrid1.SelectedObject = s;
+            var obj = new MyObjectShell(s);
+            propertyGrid1.SelectedObject = obj;
+
+            var sInfo = new YourFieldsClass();
+            sInfo.StudentInfo = new StudentInformation();
+           // propertyGrid1.SelectedObject = sInfo;
         }
     }
 }
