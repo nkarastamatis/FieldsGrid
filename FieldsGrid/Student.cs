@@ -7,12 +7,8 @@ using System.ComponentModel;
 
 namespace FieldsGrid
 {
-    [TypeDescriptionProvider(typeof(MyTypeDescriptionProvider))]
-    [ReadOnly(false)]
-    [TypeConverter(typeof(MyObjectShellConverter))]
-    class Student
+    public class Student
     {
-        [ReadOnly(false)]
         public string Name;
         public string Grade;
         public DateTime DOB;
@@ -25,28 +21,27 @@ namespace FieldsGrid
             DOB = new DateTime(2001, 12, 27);
 
             StudentInfo = new StudentInformation();
-            StudentInfo.Name = Name;
+            StudentInfo.Name = "NAME";
             StudentInfo.Id = "MyID";
-            Score = new List<Score>();
-            
+            Scores = new List<Score>();
+            MathTest = new Score();
+            Ints = new List<int>();
 
         }
 
         public StudentInformation StudentInfo;
-        public List<Score> Score;
+        public List<Score> Scores;
+        public List<int> Ints;
+        public Score MathTest;
 
     }
 
-    [TypeDescriptionProvider(typeof(MyTypeDescriptionProvider))]
     public class Score
     {
-        //[DisplayName("Subject")]
         public string SubjectName;
-        //[DisplayName("Result")]
         public string Grade;
     }
 
-    [TypeDescriptionProvider(typeof(MyTypeDescriptionProvider))]
     public class StudentInformation
     {
         public string Name;

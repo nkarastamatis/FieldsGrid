@@ -13,17 +13,21 @@ namespace FieldsGrid
 {
     public partial class Form1 : Form
     {
+        public Student s = new Student();
         public Form1()
         {
             InitializeComponent();
-            var s = new Student();
-            var fields = typeof(Student).GetFields();
-            var obj = new MyObjectShell(s);
-            propertyGrid1.SelectedObject = obj;
+            MyCustomTypeDescriptor.modifyNonSystemTypes(s.GetType());
+            propertyGrid1.SelectedObject = s;
+        }
 
-            var sInfo = new YourFieldsClass();
-            sInfo.StudentInfo = new StudentInformation();
-           // propertyGrid1.SelectedObject = sInfo;
+        private void propertyGrid1_Enter(object sender, EventArgs e)
+        {
+            GridItem gridItem = propertyGrid1.SelectedGridItem;
+            if (gridItem == null) 
+                return;
+
+
         }
     }
 }
